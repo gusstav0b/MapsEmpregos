@@ -1,8 +1,26 @@
-<mat-toolbar color="primary">
-    <span> 
-        <a>
-            <img src="assets\imagens\logo.png">
-        </a>
-    </span>
+<mat-toolbar class="header mat-elevation-z5">
+    <button>Above</button>
+<mat-menu #aboveMenu="matMenu" yPosition="above">
+  
+</mat-menu>
+
+<button>Below</button>
+<mat-menu #belowMenu="matMenu" yPosition="below">
+ 
+</mat-menu>
+
+<button>Before</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+ 
+</mat-menu>
+
+
+<button>After</button>
+<mat-menu #afterMenu="matMenu" xPosition="after">
+  
+</mat-menu>
+   
+  
+   
 </mat-toolbar>
 
