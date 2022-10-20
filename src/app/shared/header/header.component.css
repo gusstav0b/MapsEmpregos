@@ -1,18 +1,33 @@
 .header{
     display: flex;
-    vertical-align: middle;
     background-color: #6495ED;
+    align-items: center;
     
     
 }
 
-.header .title-group{
-    padding-left: 5px;
-    padding-right: 5px;
-     
-    
-}
 
-.header span{
+.header a{
+    display: flex;
+    align-items: center;
     font-size: medium;
+    
 }
+
+.header .tittle-group {
+    padding-left: 25px;
+    font-weight: 400;
+    
+    
+      
+}
+
+.header .tittle-group2{
+    
+    padding-right: 0px;
+    font-family: fantasy;
+    
+}
+
+
+
