@@ -12,6 +12,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { PerfilComponent } from './views/perfil/perfil.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+import {MatInputModule}from '@angular/material/input';
 
 
 
@@ -23,7 +27,8 @@ import { PerfilComponent } from './views/perfil/perfil.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    PerfilComponent,
+    PerfilComponent
+   
     
   ],
   imports: [
@@ -33,7 +38,12 @@ import { PerfilComponent } from './views/perfil/perfil.component';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule
+    
     
 
   ],
