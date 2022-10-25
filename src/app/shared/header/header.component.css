@@ -17,10 +17,7 @@
 
 
 
-.header .testando{
-    
-    
-    display: flex;
-    justify-content: flex-end;
-}
+.example-spacer {
+    flex: 11 auto;
+  }
 

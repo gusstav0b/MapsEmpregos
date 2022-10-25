@@ -16,6 +16,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule}from '@angular/material/input';
+import { CurriculoComponent } from './views/curriculo/curriculo.component';
+import { LoginComponent } from './views/login/login.component';
+import { CadastroComponent } from './views/cadastro/cadastro.component';
 
 
 
@@ -27,7 +30,10 @@ import {MatInputModule}from '@angular/material/input';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    PerfilComponent
+    PerfilComponent,
+    CurriculoComponent,
+    LoginComponent,
+    CadastroComponent
    
     
   ],

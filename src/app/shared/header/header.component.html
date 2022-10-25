@@ -1,44 +1,40 @@
 <mat-toolbar class="header mat-elevation-z5">
-    <span class="tittle-group2">
-        Maps Empregos
-         
-     </span>
+  <span class="tittle-group2">
+    Maps Empregos
+     
+ </span>
+  <button mat-button routerLink="inicio">
+    <mat-icon>home</mat-icon>
+    Página inicial
+  </button>
+
+  <button mat-button routerLink="perfil">
     
-    <section >
-        
-        <div class="example-button-row">
-           
-          <button mat-button routerLink="inicio">
-            <mat-icon>home</mat-icon>
-            Página inicial
-          </button>
+    <mat-icon >person</mat-icon>
+    Perfil
 
-          <button mat-button routerLink="perfil">
-            
-            <mat-icon >person</mat-icon>
-            Perfil
-        
-        </button>
+</button>
 
-          <button mat-button>
-            <mat-icon>search</mat-icon> 
-             Vagas
-        </button>
-        
-        <button mat-button>
-            <mat-icon>feed</mat-icon> 
-             Currículo
-        </button>
+  <button mat-button>
+    <mat-icon>search</mat-icon> 
+     Vagas
+</button>
 
-        
-        </div>
-      
-        
-       
-      </section>
+<button mat-button routerLink="curriculo">
+    <mat-icon>feed</mat-icon> 
+     Currículo
+</button>
 
-      
+<span class="example-spacer"></span>
+
+<button mat-button routerLink="login">
+  <mat-icon>account_circle</mat-icon> 
+   Login
+</button>
+
+<button mat-button routerLink="cadastro">
+  <mat-icon>person_add</mat-icon> 
+   Cadastro
+</button>
+
 </mat-toolbar>
-
-
- 

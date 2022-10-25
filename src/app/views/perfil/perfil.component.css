@@ -4,10 +4,20 @@ form{
 }
 
 .form-group {
+    font-size: large;
     display: flex;
     flex-direction: column;
     margin-bottom: 1em;
 }
+
+.form-groupp {
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+
 
 .form-group label{
     font-weight: bold;
@@ -22,6 +32,13 @@ form{
     color: #777;
     font-size: 0.8em;
 }
+.form-groupp input{
+
+    padding: 0.6em;
+    color: #777;
+    font-size: 0.8em;
+    
+}
 
 input[type="submit"]:hover {
     background-color: #EFEFEF;
@@ -32,3 +49,4 @@ input[type="submit"]:hover {
     cursor: pointer;
     transition: 0.4s;
 }
+
