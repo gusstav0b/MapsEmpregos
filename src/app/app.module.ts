@@ -19,6 +19,7 @@ import { CadastroComponent } from './views/cadastro/cadastro.component';
 import { PagesModule } from './pages/pages.module';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {MatSelectModule} from '@angular/material/select';
     PagesModule,
     MatCardModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatListModule
     
   ],
   providers: [],

@@ -1,11 +1,125 @@
-<br>
-<br>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="opcoes">
+        <mat-card-content>
+            <mat-list style="padding: 0;">
+                <mat-list-item class="list-item" (click)="flag='settings'" [ngClass]="flag=='settings' ? 'list-border' : ''"><mat-icon class="icon-style">person</mat-icon>CONFIGURAÇÕES DE CONTA</mat-list-item>
+                <mat-list-item class="list-item" (click)="flag='security'" [ngClass]="flag=='security' ? 'list-border' : ''"><mat-icon class="icon-style">vpn_key</mat-icon>SENHA E SEGURANÇA </mat-list-item>
+                <mat-list-item class="list-item" (click)="flag='conecct'" [ngClass]="flag=='conecct' ? 'list-border' : ''"><mat-icon class="icon-style">device_hub</mat-icon>CONEXÕES </mat-list-item>
+               </mat-list>
+        </mat-card-content>
+    </mat-card>
 
+    <mat-card class="box" *ngIf="flag=='settings'">
+        <mat-card-header class="mat-card-header-class">
+          <mat-card-title class="mat-card-title-class">CONFIGURAÇÕES DE CONTA</mat-card-title>
+        </mat-card-header>
 
+        <p class="label-intermed">Gerenciamento dos detalhes da conta.</p>
 
-<form>
+        <mat-card-title class="mat-card-title-class">INFORMAÇÕES DA CONTA</mat-card-title>
 
+        <div style="display:flex;">
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="user" matInput placeholder="Usuário">    
+            </mat-form-field>
     
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="email" matInput placeholder="Email" >
+            </mat-form-field>
+        </div>
+
+        <mat-card-header class="mat-card-header-class">
+            <mat-card-title class="mat-card-title-class">DETALHES PESSOAIS</mat-card-title>
+        </mat-card-header>
+
+        <p class="label-intermed">Gerenciamento das informações pessoais da conta. 
+            Essas informações são pessoais e serão exibidas apenas para o dona da conta.</p>
+
+        <div style="display:flex;">
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="name" matInput placeholder="Nome">    
+            </mat-form-field>
+        
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="secondname" matInput placeholder="Sobrenome" >
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <mat-select [(value)]="idiomaValue">
+                    <mat-option *ngFor="let idioma of idiomas" [value]="idioma.value">
+                      {{idioma.viewValue}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        
+        <mat-card-header class="mat-card-header-class">
+            <mat-card-title class="mat-card-title-class">ENDEREÇO</mat-card-title>
+        </mat-card-header>
+
+        <div style="display:flex;">
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="endereco" matInput placeholder="Endereço">    
+            </mat-form-field>
+        
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="city" matInput placeholder="Cidade" >
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="uf" matInput placeholder="Estado" >
+            </mat-form-field>
+        </div>
+
+        <div style="display:flex;">
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="cep" matInput placeholder="Cep" >
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="comlemento" matInput placeholder="Complemento" >
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="Bairro" matInput placeholder="Bairro" >
+            </mat-form-field>
+        </div>
+
+        <mat-card-header class="mat-card-header-class">
+            <mat-card-title class="mat-card-title-class">PAÍS/REGIÃO</mat-card-title>
+        </mat-card-header>
+
+        <mat-form-field class="example-full-width" style="margin-right: 5%; width: 580px !important;">
+            <input type="text" id="pais" matInput placeholder="PAÍS/REGIÃO" >
+        </mat-form-field>
+
+        <button mat-stroked-button color="accent" class="btn-block" style="width: 580px;">DESCARTAR MUDANÇAS</button>
+
+        <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; width: 580px; margin-top: 5%; border-color: blue;"><span style="color:white;">SALVAR MUDANÇAS</span></button>
+
+
+        <!--
+        <form class="example-form" >
+          <mat-card-content>
+
+            <mat-form-field class="example-full-width">
+              <input type="text" id="email" matInput placeholder="Email" >
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input type="password" id="password" matInput placeholder="Senha" >
+            </mat-form-field>
+          </mat-card-content>
+          <button mat-stroked-button color="accent" class="btn-block">Cadastrar-se</button>
+        </form>
+    -->
+
+      </mat-card>
+  </div>
+
+
+<!--<form style="padding-top: 10%;">
 <div class="form-group">
     <label for="nome">Nome</label>
     <input type="text" id="nome" placeholder="Digite seu nome completo" required />
@@ -37,8 +151,5 @@
 
 <input type="submit" />
 
-</form>
-
-
-<p>
+</form>-->
    
