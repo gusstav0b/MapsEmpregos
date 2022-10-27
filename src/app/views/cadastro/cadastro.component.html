@@ -1,6 +1,32 @@
-<br>
-
-<div class="title">Criando nova conta</div>
-<br>
-<div> Já tem cadastro? Faça login aqui</div>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Cadastrar-se</mat-card-title>
+      </mat-card-header>
+      <form class="example-form" [formGroup]="formulario">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input type="text" id="user" matInput placeholder="Usuário" formControlName="user">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input type="text" id="email" matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input type="password" id="password" matInput placeholder="Senha" formControlName="password">
+          </mat-form-field>
+          <!--<mat-form-field class="example-full-width">
+            <mat-label>Choose a role...</mat-label>
+            <mat-select>
+              <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>-->
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block" [disabled]="!formulario.valid" (click)="onsubmit()">Cadastrar-se</button>
+      </form>
+      <mat-card-footer>
+        <p style="margin-top: 5%; margin-left: 5%;">Já tem uma conta? <a href="/login">Logar!</a></p>
+      </mat-card-footer>
+    </mat-card>
+  </div>
 

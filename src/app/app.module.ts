@@ -11,12 +11,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { PerfilComponent } from './views/perfil/perfil.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule}from '@angular/material/input';
 import { CurriculoComponent } from './views/curriculo/curriculo.component';
 import { LoginComponent } from './views/login/login.component';
 import { CadastroComponent } from './views/cadastro/cadastro.component';
 import { PagesModule } from './pages/pages.module';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,11 @@ import { PagesModule } from './pages/pages.module';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    PagesModule
+    PagesModule,
+    MatCardModule,
+    MatSelectModule,
+    ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

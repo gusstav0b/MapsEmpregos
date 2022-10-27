@@ -11,13 +11,14 @@ import { PerfilComponent } from './views/perfil/perfil.component';
 
 const routes: Routes = [
   { 
-      path: '', 
-    redirectTo: 'pages', 
+    path: '', 
+    redirectTo: 'login', 
     pathMatch: 'full' 
   },
-  {
-    path: "pages",
-    component: PagesComponent
+  { 
+    path: 'pages', 
+    redirectTo: '/pages/home', 
+    pathMatch: 'full' 
   },
   {
     path: "login",
