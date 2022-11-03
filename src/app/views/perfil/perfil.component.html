@@ -20,9 +20,9 @@
 
         <div style="display:flex;">
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="user" matInput placeholder="Usuário">    
+                <input type="text" id="user" matInput placeholder="Usuário">
             </mat-form-field>
-    
+
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
                 <input type="text" id="email" matInput placeholder="Email" >
             </mat-form-field>
@@ -32,14 +32,14 @@
             <mat-card-title class="mat-card-title-class">DETALHES PESSOAIS</mat-card-title>
         </mat-card-header>
 
-        <p class="label-intermed">Gerenciamento das informações pessoais da conta. 
+        <p class="label-intermed">Gerenciamento das informações pessoais da conta.
             Essas informações são pessoais e serão exibidas apenas para o dona da conta.</p>
 
         <div style="display:flex;">
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="name" matInput placeholder="Nome">    
+                <input type="text" id="name" matInput placeholder="Nome">
             </mat-form-field>
-        
+
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
                 <input type="text" id="secondname" matInput placeholder="Sobrenome" >
             </mat-form-field>
@@ -54,16 +54,16 @@
         </div>
 
 
-        
+
         <mat-card-header class="mat-card-header-class">
             <mat-card-title class="mat-card-title-class">ENDEREÇO</mat-card-title>
         </mat-card-header>
 
         <div style="display:flex;">
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="endereco" matInput placeholder="Endereço">    
+                <input type="text" id="endereco" matInput placeholder="Endereço">
             </mat-form-field>
-        
+
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
                 <input type="text" id="city" matInput placeholder="Cidade" >
             </mat-form-field>
@@ -98,24 +98,66 @@
         <button mat-stroked-button color="accent" class="btn-block" style="width: 580px;">DESCARTAR MUDANÇAS</button>
 
         <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; width: 580px; margin-top: 5%; border-color: blue;"><span style="color:white;">SALVAR MUDANÇAS</span></button>
-
-
-        <!--
-        <form class="example-form" >
-          <mat-card-content>
-
-            <mat-form-field class="example-full-width">
-              <input type="text" id="email" matInput placeholder="Email" >
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <input type="password" id="password" matInput placeholder="Senha" >
-            </mat-form-field>
-          </mat-card-content>
-          <button mat-stroked-button color="accent" class="btn-block">Cadastrar-se</button>
-        </form>
-    -->
-
       </mat-card>
+
+    <mat-card class="box" *ngIf="flag=='security'">
+      <mat-card-header class="mat-card-header-class">
+        <mat-card-title class="mat-card-title-class">ALTERAR SENHA</mat-card-title>
+      </mat-card-header>
+
+      <p class="label-intermed">Para sua segurança, recomendamos o uso de uma senha única, que não seja usada para nenhuma outra conta on-line.</p>
+
+      <div class="row" style="display:flex;">
+        <div class="col-md-6">
+          <form class="example-form" [formGroup]="formularioSenha">
+            <mat-card-header class="mat-card-header-class title-form">
+              <mat-card-title class="mat-card-title-class">SENHA ATUAL</mat-card-title>
+            </mat-card-header>
+            <p class="label-form">OBRIGATÓRIO</p>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+              <input type="text" id="password" matInput placeholder="SENHA ATUAL" formControlName="password">
+            </mat-form-field>
+
+            <mat-card-header class="mat-card-header-class title-form">
+              <mat-card-title class="mat-card-title-class">NOVA SENHA</mat-card-title>
+            </mat-card-header>
+            <p class="label-form">OBRIGATÓRIO</p>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+              <input type="text" id="newPassword" matInput placeholder="NOVA SENHA" formControlName="newPassword">
+            </mat-form-field>
+
+
+            <mat-card-header class="mat-card-header-class title-form">
+              <mat-card-title class="mat-card-title-class">DIGITE A NOVA SENHA NOVAMENTE</mat-card-title>
+            </mat-card-header>
+            <p class="label-form">OBRIGATÓRIO</p>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+              <input type="text" id="newPasswordAgain" matInput placeholder="DIGITE A NOVA SENHA NOVAMENTE" formControlName="newPasswordAgain">
+            </mat-form-field>
+          </form>
+        </div>
+        <div id="linha-vertical"></div>
+        <div class="col-md-6" style="margin-left: 10%;">
+          <mat-card-header class="mat-card-header-class title-form">
+            <mat-card-title class="mat-card-title-class">SUA SENHA</mat-card-title>
+          </mat-card-header>
+          <div style="width: 50%;">
+            <p>Sua senha precisa ser diferente das últimas 5 senhas usadas</p>
+            <p>Sua senha precisa ter mais de 7 caracteres</p>
+            <p>Sua senha precisa ter pelo menos um número</p>
+            <p>Sua senha não pode conter espaços</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="btnDiv">
+        <button mat-stroked-button color="accent" class="btn-block" style="width: 580px;" (click)="formularioSenha.reset()">DESCARTAR MUDANÇAS</button>
+        <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; width: 580px; margin-top: 5%; border-color: blue;" [disabled]="!formularioSenha.valid" (click)="onsubmit()"><span style="color:white;">SALVAR MUDANÇAS</span></button>
+      </div>
+    </mat-card>
   </div>
 
 
@@ -127,29 +169,28 @@
 <div class="form-group">
     <label for="Email">E-mail</label>
     <input type="text" id="email" placeholder="Digite seu endereço de email" required />
-    
+
 </div>
 
 <div class="form-group">
     <label for="Celular">Celular</label>
     <input type="text" id="celular" placeholder="Digite seu número de telefone para contato" required />
-    
+
 </div>
 
 <div class="form-group">
     <label for="CPF">CPF</label>
     <input type="text" id="cpf" placeholder="Digite seu CPF" required />
-    
-    
+
+
 </div>
 
 <div class="form-group" >
     <label for="Endereço">Endereço</label>
     <input type="text" id="endereco" placeholder="Digite seu endereço" required />
-    
+
 </div>
 
 <input type="submit" />
 
 </form>-->
-   

@@ -92,7 +92,7 @@
     width: 500px;
     text-align: left;
     margin-left: -15px;
-    
+
   }
   .mat-card-title-class {
     font-size: 20px;
@@ -111,4 +111,23 @@
     margin-bottom: 5%;
     margin-top: 5%;
     width: 500px;
+}
+
+#linha-vertical {
+  height: 480px;
+  border-right: 1px solid #000;
+  opacity: 20%;
+  margin-left: 15%;
+}
+
+.label-form{
+  font-size: smaller;
+}
+
+.title-form{
+  margin-top: 8%;
+}
+
+.btnDiv{
+  margin-top: 10%;
 }
