@@ -20,7 +20,7 @@
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   z-index: 5;
-  max-width: 330px;
+  max-width: 380px;
   margin: auto;
 }
 .box.back {

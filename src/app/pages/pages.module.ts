@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { PagesRoutingModule } from "./pages-routing.module";
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
     imports:[
@@ -29,7 +30,8 @@ import { PagesRoutingModule } from "./pages-routing.module";
         MatFormFieldModule,
         FormsModule,
         MatInputModule,
-        PagesRoutingModule
+        PagesRoutingModule,
+        MatCardModule,
     ],
     declarations:[
         PagesComponent,
