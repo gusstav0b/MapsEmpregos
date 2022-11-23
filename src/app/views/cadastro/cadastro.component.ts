@@ -25,23 +25,42 @@ export class CadastroComponent implements OnInit {
     })
   }
 
-  onsubmit(){
-    let obj = JSON.parse("{}");
-    obj = this.formulario.value;
-    let token = Math.random().toString(36).substring(2,12);
-    let token2 = Math.random().toString(36).substring(2,12);
-    let tokenUser = token + token2;
-    obj.token = tokenUser;
+  async onsubmit(){
+    await this.mapsService.cadastraUsuario(this.formulario.value).toPromise()
+    .then(
+      response =>{
+        //@ts-ignore
+        if(!response.mensagem.includes("já cadastrado")){
+          //@ts-ignore
+          this.snackBar.open(response.mensagem, "Fechar", {duration: 3000});
 
-    this.mapsService.cadastraUsuario(obj).subscribe((result: any) => {
-      if(result.mensagem=="CRIADO CLIENTE"){
-        this.snackBar.open("Usuário criado com sucesso!", "Fechar", {duration: 3000});
-        localStorage.setItem('token', tokenUser);
-        this.router.navigate(['/pages/home']);
-        //this.formulario.reset();
-      }else{
-        this.snackBar.open("Erro ao cadastrar usuário.", "Fechar", {duration: 3000});
-      }  
-    }); 
+          let objLogin = JSON.parse("{}");
+          objLogin.emailUser =  this.formulario.value.email;
+          objLogin.password = this.formulario.value.password;
+
+          this.mapsService.login(objLogin).toPromise()
+          .then(
+            response =>{
+              //@ts-ignore
+              if(!response.mensagem.includes("Falha na autenticação")){
+                //@ts-ignore
+                localStorage.setItem('token', response.token);
+                this.router.navigate(['/pages/home']);
+              }
+            }
+          )
+          .catch(
+            error =>{
+              //this.snackBar.open(error.error.mensagem, "Fechar", {duration: 3000});
+            }
+          )
+        }
+      }
+    )
+    .catch(
+      error =>{
+        this.snackBar.open(error.error.mensagem, "Fechar", {duration: 3000});
+      }
+    )
   }
 }

@@ -9,13 +9,27 @@ import { MapsServiceService } from 'src/app/service/maps-service.service';
 export class HomeComponent implements OnInit {
   cards = []
 
-  constructor(private mapsService: MapsServiceService) { }
+  constructor(private mapsService: MapsServiceService,) { }
 
   ngOnInit(): void {
+    //console.log(localStorage.getItem("token"))
+
+    /*this.mapsService.consultarLogin('login').subscribe((result: any) => {
+      if(result.result){
+        for(let i = 0; i<50; i++){
+          this.cards.push(this.mapsService.vaga)
+        }
+
+        this.mapsService.objCliente = result;
+
+      }else{
+        this.mapsService.deslogar();
+      }  
+    });*/
+
     for(let i = 0; i<50; i++){
       this.cards.push(this.mapsService.vaga)
     }
-    
+  
   }
-
 }

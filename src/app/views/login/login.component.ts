@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder, Validators  } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,19 +21,30 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onsubmit(){
+  async onsubmit(){
     //console.log(this.formulario.value);
-    this.mapsService.consultarUsuario(this.formulario.value.user, this.formulario.value.password).subscribe((result: any) => {
-      if(result.token != ""){
-        //this.snackBar.open("Usuário criado com sucesso!", "Fechar", {duration: 3000});
-        localStorage.setItem('token', result.token);
-        this.router.navigate(['/pages/home']);
-        //this.formulario.reset();
-      }else{
-        this.snackBar.open("Usuário ou senha incorretos", "Fechar", {duration: 3000});
-      }  
-    }); 
+    let obj = JSON.parse("{}");
+    obj.emailUser = this.formulario.value.user;
+    obj.password = this.formulario.value.password;
 
-    //this.router.navigate(['/pages/home']);
+    await this.mapsService.login(obj).toPromise()
+    .then(
+      response =>{
+        //@ts-ignore
+        if(!response.mensagem.includes("Falha na autenticação")){
+          //console.log(response);
+          //@ts-ignore
+          this.snackBar.open(response.mensagem, "Fechar", {duration: 3000});
+          //@ts-ignore
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/pages/home']);
+        }
+      }
+    )
+    .catch(
+      error =>{
+        this.snackBar.open(error.error.mensagem, "Fechar", {duration: 3000});
+      }
+    )
   }
 }

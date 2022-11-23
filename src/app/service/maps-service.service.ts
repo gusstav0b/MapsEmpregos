@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
 export class MapsServiceService {
 
   menuFlutuante = false;
-  
+  objCliente = JSON.parse("{}");
+
   public vaga = {
     codigo: "12345555",
     titulo: "VAGA1",
@@ -30,6 +31,14 @@ export class MapsServiceService {
 
   consultarUsuario(emailUser, password){
     return this.httpClient.get(environment.api + "/cliente/consulta" + "/" + emailUser + "/" + password)
+  }
+
+  consultarLogin(tabela){
+    return this.httpClient.get(environment.api + "/cliente/consultaToken" + "/" + tabela + "/" + localStorage.getItem('token'))
+  }
+
+  login(obj){
+    return this.httpClient.post(environment.api + "/cliente/login", obj)
   }
 
   get logado(): boolean{
