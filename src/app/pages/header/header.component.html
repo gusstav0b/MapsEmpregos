@@ -1,36 +1,42 @@
 <mat-toolbar class="header mat-elevation-z5">
-  <span class="tittle-group2">
-    Maps Empregos
-     
+  <span class="tittle-group2" (click)="redirect('/pages/home')" style="cursor: pointer;">
+    Maps Empregos  
  </span>
-  <button mat-button routerLink="home">
+  <!--<button mat-button routerLink="home">
     <mat-icon>home</mat-icon>
     Página inicial
-  </button>
+  </button>-->
 
-  <button mat-button routerLink="profile">
-    
-    <mat-icon >person</mat-icon>
-    Perfil
 
-</button>
 
-<button mat-button routerLink="curriculo">
-    <mat-icon>feed</mat-icon> 
-     Currículo
-</button>
 
-<button mat-button>
+
+<!--<button mat-button>
   <mat-icon>search</mat-icon> 
    Vagas
-</button>
+</button>-->
+
+
+  <div class="form-outline">
+    <input type="search" id="form1" class="form-control" placeholder="Search" />
+  </div>
+  <button type="button" class="btn btn-primary">
+    <mat-icon nbPrefix class="icon-search">search</mat-icon> 
+  </button>
+
+
 
 <span class="example-spacer"></span>
 
-<button mat-button routerLink="login">
+<button mat-button (click)="menuFlutuante=!menuFlutuante">
   <mat-icon>account_circle</mat-icon> 
-   Login/Cadastro
+   Perfil
 </button>
+
+<!--<button mat-button (click)="deslogar()">
+  <mat-icon>account_circle</mat-icon> 
+   Log out
+</button>-->
 
 <!--<button mat-button routerLink="cadastro">
   <mat-icon>person_add</mat-icon> 
@@ -38,3 +44,22 @@
 </button>-->
 
 </mat-toolbar>
+
+<div class="menu-flutuante" *ngIf="menuFlutuante">
+
+  <button mat-button routerLink="profile">
+    <mat-icon >person</mat-icon>
+    {{nomeUser}}
+  </button>
+
+  <button mat-button routerLink="curriculo" class="btnBot">
+    <mat-icon>feed</mat-icon> 
+     Currículo
+  </button>
+
+  <button mat-button (click)="deslogar()"  class="btnBot">
+    <mat-icon>logout</mat-icon> 
+     Sair
+  </button>
+  
+</div>

@@ -6,24 +6,26 @@ import { CurriculoComponent } from './views/curriculo/curriculo.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { PerfilComponent } from './views/perfil/perfil.component';
+import { UsuarioNaoAutenticadoGuard } from './service/usuario-nao-autenticado.guard';
+import { UsuarioAutenticadoGuard } from './service/usuario-autenticado.guard';
 
 
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent,  pathMatch: 'full', canActivate: [UsuarioNaoAutenticadoGuard],},
+
   { 
     path: '', 
-    redirectTo: 'login', 
+    redirectTo: '/pages/home', 
     pathMatch: 'full' 
   },
+
   { 
     path: 'pages', 
     redirectTo: '/pages/home', 
     pathMatch: 'full' 
   },
-  {
-    path: "login",
-    component: LoginComponent
-  },
+
   {
     path: "cadastro",
     component: CadastroComponent

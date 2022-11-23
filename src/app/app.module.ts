@@ -20,6 +20,8 @@ import { PagesModule } from './pages/pages.module';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import {MatListModule} from '@angular/material/list';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    HttpClientModule,
     MatButtonModule,
     MatGridListModule,
     MatFormFieldModule,
@@ -48,7 +51,7 @@ import {MatListModule} from '@angular/material/list';
     MatListModule
     
   ],
-  providers: [],
+  providers: [MatSnackBar,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

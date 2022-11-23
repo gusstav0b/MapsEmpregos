@@ -1,9 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapsServiceService {
+
+  menuFlutuante = false;
+  
   public vaga = {
     codigo: "12345555",
     titulo: "VAGA1",
@@ -16,5 +22,22 @@ export class MapsServiceService {
     img: "https://cdn.pixabay.com/photo/2019/04/04/15/17/smartphone-4103051_960_720.jpg"
   }
 
-  constructor() { }
+  constructor(private httpClient: HttpClient, private router : Router) { }
+
+  cadastraUsuario(obj){
+    return this.httpClient.post(environment.api + "/cliente/cadastro", obj)
+  }
+
+  consultarUsuario(emailUser, password){
+    return this.httpClient.get(environment.api + "/cliente/consulta" + "/" + emailUser + "/" + password)
+  }
+
+  get logado(): boolean{
+    return localStorage.getItem('token') ? true : false;
+  }
+
+  deslogar(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

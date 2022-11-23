@@ -5,11 +5,12 @@ import { PagesComponent } from './pages.component';
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from '../views/perfil/perfil.component';
 import { CurriculoComponent } from '../views/curriculo/curriculo.component';
+import { UsuarioAutenticadoGuard } from '../service/usuario-autenticado.guard';
 
 
-const routes: Routes = [{
-  path: 'pages',
-  component: PagesComponent,
+const routes: Routes = [
+  { path: 'pages', component: PagesComponent, canActivate: [UsuarioAutenticadoGuard],
+
   children: [
     {
         path: 'home',
@@ -23,18 +24,9 @@ const routes: Routes = [{
         path: 'curriculo',
         component: CurriculoComponent,
     },
-    { 
-        path: 'login', 
-        redirectTo: '/login', 
-        pathMatch: 'full' 
-    },
-    { 
-        path: 'cadastro', 
-        redirectTo: '/cadastro', 
-        pathMatch: 'full' 
-    },
   ],
-}];
+},
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
