@@ -33,6 +33,29 @@ export class CadastroComponent implements OnInit {
         if(!response.mensagem.includes("já cadastrado")){
           //@ts-ignore
           this.snackBar.open(response.mensagem, "Fechar", {duration: 3000});
+          
+          let objCliente = JSON.parse("{}");
+          objCliente.email =  this.formulario.value.email;
+          objCliente.user = this.formulario.value.user;
+
+
+          this.mapsService.cadastroCliente(objCliente).toPromise()
+          .then(
+            response =>{
+              //@ts-ignore
+              if(response.mensagem.includes("CRIADO CLIENTE")){
+                //@ts-ignore
+                //localStorage.setItem('token', response.token);
+                //this.router.navigate(['/pages/home']);
+              }
+            }
+          )
+          .catch(
+            error =>{
+              //this.snackBar.open(error.error.mensagem, "Fechar", {duration: 3000});
+            }
+          )
+
 
           let objLogin = JSON.parse("{}");
           objLogin.emailUser =  this.formulario.value.email;

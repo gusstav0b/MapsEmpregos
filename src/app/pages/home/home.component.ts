@@ -32,4 +32,19 @@ export class HomeComponent implements OnInit {
     }
   
   }
+
+  /*async consulta(){
+    await this.mapsService.consulta().toPromise()
+    .then(
+      response =>{
+        console.log(response)
+      }
+    )
+    .catch( 
+      error => {
+        console.log(error)
+      }
+    ) 
+  }
+  */
 }

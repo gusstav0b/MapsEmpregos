@@ -30,7 +30,7 @@
 
 <button mat-button (click)="menuFlutuante=!menuFlutuante">
   <mat-icon>account_circle</mat-icon> 
-   Perfil
+  {{nomeUser}}
 </button>
 
 <!--<button mat-button (click)="deslogar()">
@@ -49,10 +49,10 @@
 
   <button mat-button routerLink="profile">
     <mat-icon >person</mat-icon>
-    {{nomeUser}}
+    Perfil
   </button>
 
-  <button mat-button routerLink="curriculo" class="btnBot">
+  <button mat-button class="btnBot" (click)="redirect('/pages/curriculo')">
     <mat-icon>feed</mat-icon> 
      Currículo
   </button>

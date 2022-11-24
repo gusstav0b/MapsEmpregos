@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MapsServiceService } from '../service/maps-service.service';
 
 @Component({
   selector: 'app-pages',
@@ -11,9 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mapsService: MapsServiceService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    //console.log("aqui")
+    await this.mapsService.consulta().toPromise()
+    .then(
+      response =>{
+        //console.log(response)
+        //@ts-ignore
+        this.mapsService.objClienteBase = response.response;
+      }
+    )
+    .catch( 
+      error => {
+        //console.log(error)
+        this.mapsService.deslogar();
+      }
+    )
   }
-
 }

@@ -16,15 +16,15 @@
 
         <p class="label-intermed">Gerenciamento dos detalhes da conta.</p>
 
-        <mat-card-title class="mat-card-title-class">INFORMAÇÕES DA CONTA</mat-card-title>
+        <mat-card-title class="mat-card-title-class" style="margin-bottom: 3%;">INFORMAÇÕES DA CONTA</mat-card-title>
 
         <div style="display:flex;">
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="user" matInput placeholder="Usuário">
+                <input type="text" id="user" matInput placeholder="Usuário" [(ngModel)]="objUserPerfil.userName">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="email" matInput placeholder="Email" >
+                <input type="text" id="email" matInput placeholder="Email" [(ngModel)]="objUserPerfil.userEmail" >
             </mat-form-field>
         </div>
 
@@ -97,7 +97,7 @@
 
         <button mat-stroked-button color="accent" class="btn-block">DESCARTAR MUDANÇAS</button>
 
-        <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; margin-top: 5%; border-color: blue;"><span style="color:white;">SALVAR MUDANÇAS</span></button>
+        <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; margin-top: 5%; border-color: blue;" (click)="enviarAlteracoesInfo()"><span style="color:white;">SALVAR MUDANÇAS</span></button>
       </mat-card>
 
     <mat-card class="box" *ngIf="flag=='security'">

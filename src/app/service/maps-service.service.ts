@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class MapsServiceService {
 
   menuFlutuante = false;
-  objCliente = JSON.parse("{}");
+  objClienteBase = JSON.parse("{}");
 
   public vaga = {
     codigo: "12345555",
@@ -29,12 +30,23 @@ export class MapsServiceService {
     return this.httpClient.post(environment.api + "/cliente/cadastro", obj)
   }
 
+  /*
   consultarUsuario(emailUser, password){
     return this.httpClient.get(environment.api + "/cliente/consulta" + "/" + emailUser + "/" + password)
   }
 
   consultarLogin(tabela){
     return this.httpClient.get(environment.api + "/cliente/consultaToken" + "/" + tabela + "/" + localStorage.getItem('token'))
+  }
+  */
+
+  cadastroCliente(obj){
+    return this.httpClient.post(environment.api + "/cliente/cadastroCliente", obj);
+  }
+
+  consulta(){
+    let header = new HttpHeaders().append('Authorization', localStorage.getItem('token'));
+    return this.httpClient.post(environment.api + "/cliente/consulta", undefined, {headers: header} );
   }
 
   login(obj){

@@ -12,9 +12,16 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private mapsService: MapsServiceService) { }
 
   menuFlutuante = false;
-  nomeUser = "TESTE"
+  nomeUser = this.mapsService.objClienteBase.user;
 
   ngOnInit(): void {
+    setTimeout(() =>{
+      this.nomeUser = this.mapsService.objClienteBase.user;
+    }, 300)
+  }
+
+  ngAfterViewInit(){
+    /*this.nomeUser = this.mapsService.objClienteBase.user;*/
   }
 
   redirect(rota){
