@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { MapsServiceService } from 'src/app/service/maps-service.service';
 
 
@@ -11,16 +13,16 @@ import { MapsServiceService } from 'src/app/service/maps-service.service';
 export class PerfilComponent implements OnInit {
   flag = 'settings';
   formularioSenha: FormGroup;
-  idiomaValue = 'pt-br';
   objUserPerfil = JSON.parse("{}");
   idiomas = [
     {value: 'pt-br', viewValue: 'Português (Brasil)'},
     {value: 'en-us', viewValue: 'Inglês (Estados Unidos)'},
     {value: 'es', viewValue: 'Espanhol'},
   ];
-  constructor(private formBuilder : FormBuilder, private mapsService: MapsServiceService) { }
+  constructor(private formBuilder : FormBuilder, private mapsService: MapsServiceService, private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
+    //this.objUserPerfil.idioma = 'pt-br';
     this.formularioSenha = this.formBuilder.group({
       password: [null, [Validators.required]],
       newPassword: [null, [Validators.required]],
@@ -28,16 +30,73 @@ export class PerfilComponent implements OnInit {
     })
 
     setTimeout(() =>{
-      this.objUserPerfil.userName = this.mapsService.objClienteBase.user;
-      this.objUserPerfil.userEmail = this.mapsService.objClienteBase.email;
-    }, 300)
+      this.mapsService.consultaCliente().toPromise()
+      .then(
+        response =>{
+          //@ts-ignore
+          if(response.response){
+            //@ts-ignore
+            this.objUserPerfil = response.response;
+            this.objUserPerfil.user = this.mapsService.objClienteBase.user;
+            this.objUserPerfil.userDefault = this.mapsService.objClienteBase.user;
+            this.objUserPerfil.email = this.mapsService.objClienteBase.email;
+            this.objUserPerfil.emailDefault = this.mapsService.objClienteBase.email;
+            this.objUserPerfil.idioma =  this.objUserPerfil.idioma ? this.objUserPerfil.idioma : 'pt-br'
+            //@ts-ignore
+          }
+        }
+      )
+      .catch(
+        error =>{
+        }
+      )
+    }, 300);
   }
 
   onsubmit(){
     console.log(this.formularioSenha.value);
   }
 
-  enviarAlteracoesInfo(){
-    console.log(this.objUserPerfil);
+  async enviarAlteracoesInfo(){
+    if((this.objUserPerfil.user != this.objUserPerfil.userDefault) || (this.objUserPerfil.email != this.objUserPerfil.emailDefault)){
+      //atualizar login
+      await this.mapsService.atualizaLogin(this.objUserPerfil).toPromise()
+    .then(
+      response =>{
+        //@ts-ignore
+        if(response.token){
+          localStorage.clear();
+          //@ts-ignore
+          localStorage.setItem('token', response.token);
+        }
+      }
+    )
+    .catch(
+      error =>{
+      }
+    )
+    }
+    //atualizar cliente
+    await this.mapsService.atualizaCliente(this.objUserPerfil).toPromise()
+    .then(
+      response =>{
+        //@ts-ignore
+        if(response.mensagem){
+          //@ts-ignore
+          this.snackBar.open(response.mensagem, "Fechar", {duration: 3000});
+          //window.location.reload();
+        }
+      }
+    )
+    .catch(
+      error =>{
+        if(error.error.mensagem){
+          this.snackBar.open(error.error.mensagem, "Fechar", {duration: 3000});
+        }
+        if(error.error.error.sqlMessage){
+          this.snackBar.open(error.error.error.sqlMessage.includes("user") ? 'Usuário já cadastrado' : error.error.error.sqlMessage.includes("email") ? 'Email já cadastrado' : '', "Fechar", {duration: 3000});
+        }
+      }
+    )
   }
 }

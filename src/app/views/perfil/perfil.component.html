@@ -20,11 +20,11 @@
 
         <div style="display:flex;">
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="user" matInput placeholder="Usuário" [(ngModel)]="objUserPerfil.userName">
+                <input type="text" id="user" matInput placeholder="Usuário" [(ngModel)]="objUserPerfil.user">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="email" matInput placeholder="Email" [(ngModel)]="objUserPerfil.userEmail" >
+                <input type="text" id="email" matInput placeholder="Email" [(ngModel)]="objUserPerfil.email" >
             </mat-form-field>
         </div>
 
@@ -37,15 +37,15 @@
 
         <div style="display:flex;">
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="name" matInput placeholder="Nome">
+                <input type="text" id="name" matInput placeholder="Nome" [(ngModel)]="objUserPerfil.nome">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="secondname" matInput placeholder="Sobrenome" >
+                <input type="text" id="secondname" matInput placeholder="Sobrenome" [(ngModel)]="objUserPerfil.sobrenome">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <mat-select [(value)]="idiomaValue">
+                <mat-select [(value)]="objUserPerfil.idioma">
                     <mat-option *ngFor="let idioma of idiomas" [value]="idioma.value">
                       {{idioma.viewValue}}
                     </mat-option>
@@ -54,6 +54,15 @@
         </div>
 
 
+        <div style="display:flex;">
+          <mat-form-field class="example-full-width" style="margin-right: 5%;">
+              <input type="text" id="name" matInput placeholder="Cpf/cnpj" [(ngModel)]="objUserPerfil.cpfcnpj">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" style="margin-right: 5%;">
+              <input type="text" id="secondname" matInput placeholder="Telefone" [(ngModel)]="objUserPerfil.telefone">
+          </mat-form-field>
+      </div>
 
         <mat-card-header class="mat-card-header-class">
             <mat-card-title class="mat-card-title-class">ENDEREÇO</mat-card-title>
@@ -61,29 +70,29 @@
 
         <div style="display:flex;">
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="endereco" matInput placeholder="Endereço">
+                <input type="text" id="endereco" matInput placeholder="Endereço" [(ngModel)]="objUserPerfil.endereco">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="city" matInput placeholder="Cidade" >
+                <input type="text" id="city" matInput placeholder="Cidade" [(ngModel)]="objUserPerfil.cidade">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="uf" matInput placeholder="Estado" >
+                <input type="text" id="uf" matInput placeholder="Estado" [(ngModel)]="objUserPerfil.uf">
             </mat-form-field>
         </div>
 
         <div style="display:flex;">
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="cep" matInput placeholder="Cep" >
+                <input type="text" id="cep" matInput placeholder="Cep" [(ngModel)]="objUserPerfil.cep">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="comlemento" matInput placeholder="Complemento" >
+                <input type="text" id="comlemento" matInput placeholder="Complemento" [(ngModel)]="objUserPerfil.complemento">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="Bairro" matInput placeholder="Bairro" >
+                <input type="text" id="Bairro" matInput placeholder="Bairro" [(ngModel)]="objUserPerfil.bairro">
             </mat-form-field>
         </div>
 
@@ -92,7 +101,7 @@
         </mat-card-header>
 
         <mat-form-field class="example-full-width" style="margin-right: 5%; width: 580px !important;">
-            <input type="text" id="pais" matInput placeholder="PAÍS/REGIÃO" >
+            <input type="text" id="pais" matInput placeholder="PAÍS/REGIÃO" [(ngModel)]="objUserPerfil.pais">
         </mat-form-field>
 
         <button mat-stroked-button color="accent" class="btn-block">DESCARTAR MUDANÇAS</button>

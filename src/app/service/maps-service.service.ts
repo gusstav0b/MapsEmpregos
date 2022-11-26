@@ -49,6 +49,26 @@ export class MapsServiceService {
     return this.httpClient.post(environment.api + "/cliente/consulta", undefined, {headers: header} );
   }
 
+  atualizaCliente(obj){
+    let header = new HttpHeaders().append('Authorization', localStorage.getItem('token'));
+    return this.httpClient.patch(environment.api + "/cliente/atualizaCliente", obj, {headers: header} );
+  }
+  
+  atualizaLogin(obj){
+    let header = new HttpHeaders().append('Authorization', localStorage.getItem('token'));
+    return this.httpClient.patch(environment.api + "/cliente/atualizaLogin", obj, {headers: header} );
+  }
+
+  consultaCliente(){
+    let header = new HttpHeaders().append('Authorization', localStorage.getItem('token'));
+    return this.httpClient.get(environment.api + "/cliente/consultaCliente", {headers: header} );
+  }
+
+  consultaCampo(obj){
+    let header = new HttpHeaders().append('Authorization', localStorage.getItem('token'));
+    return this.httpClient.post(environment.api + "/cliente/consultaCampo", obj, {headers: header} );
+  }
+
   login(obj){
     return this.httpClient.post(environment.api + "/cliente/login", obj)
   }
