@@ -69,6 +69,16 @@ export class MapsServiceService {
     return this.httpClient.post(environment.api + "/cliente/consultaCampo", obj, {headers: header} );
   }
 
+  atualizaSenha(obj){
+    let header = new HttpHeaders().append('Authorization', localStorage.getItem('token'));
+    return this.httpClient.patch(environment.api + "/cliente/atualizaSenha", obj, {headers: header} );
+  }
+
+  testePass(obj){
+    let header = new HttpHeaders().append('Authorization', localStorage.getItem('token'));
+    return this.httpClient.post(environment.api + "/cliente/testePass", obj, {headers: header} );
+  }
+
   login(obj){
     return this.httpClient.post(environment.api + "/cliente/login", obj)
   }

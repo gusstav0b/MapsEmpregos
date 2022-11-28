@@ -14,6 +14,7 @@ export class PerfilComponent implements OnInit {
   flag = 'settings';
   formularioSenha: FormGroup;
   objUserPerfil = JSON.parse("{}");
+  objUserPerfilDefault = JSON.parse("{}");
   idiomas = [
     {value: 'pt-br', viewValue: 'Português (Brasil)'},
     {value: 'en-us', viewValue: 'Inglês (Estados Unidos)'},
@@ -36,13 +37,15 @@ export class PerfilComponent implements OnInit {
           //@ts-ignore
           if(response.response){
             //@ts-ignore
-            this.objUserPerfil = response.response;
+            this.objUserPerfil = JSON.parse(JSON.stringify(response.response));
+            //@ts-ignore
+            this.objUserPerfilDefault = JSON.parse(JSON.stringify(response.response));
             this.objUserPerfil.user = this.mapsService.objClienteBase.user;
             this.objUserPerfil.userDefault = this.mapsService.objClienteBase.user;
             this.objUserPerfil.email = this.mapsService.objClienteBase.email;
             this.objUserPerfil.emailDefault = this.mapsService.objClienteBase.email;
-            this.objUserPerfil.idioma =  this.objUserPerfil.idioma ? this.objUserPerfil.idioma : 'pt-br'
-            //@ts-ignore
+            this.objUserPerfil.idioma =  this.objUserPerfil.idioma ? this.objUserPerfil.idioma : 'pt-br';
+            this.objUserPerfilDefault.idioma = this.objUserPerfilDefault.idioma ? this.objUserPerfilDefault.idioma : 'pt-br';
           }
         }
       )
@@ -53,8 +56,47 @@ export class PerfilComponent implements OnInit {
     }, 300);
   }
 
-  onsubmit(){
-    console.log(this.formularioSenha.value);
+  async onsubmit(){
+    let objPassword = this.formularioSenha.value;
+    if(objPassword.newPassword == objPassword.newPasswordAgain){
+      let objAttPassword = {
+        newPassword: objPassword.newPassword
+      }
+
+      let objAttPasswordTeste = {
+        password: objPassword.password
+      }
+      //ATUALIZA SENHA
+
+      await this.mapsService.testePass(objAttPasswordTeste).toPromise()
+      .then(
+      response =>{
+        //@ts-ignore
+        if(response.mensagem=="CONFERE"){
+          this.mapsService.atualizaSenha(objAttPassword).toPromise()
+          .then(
+          response =>{
+            //@ts-ignore
+            this.snackBar.open(response.mensagem, "Fechar", {duration: 3000});
+          }
+        )
+        .catch(
+          error =>{
+          }
+        )
+        }
+      }
+    )
+    .catch(
+      error =>{
+        this.snackBar.open(error.error.mensagem, "Fechar", {duration: 3000});
+      }
+    )
+    }
+    else{
+      this.snackBar.open("NOVA SENHA NÃO CONFERE", "Fechar", {duration: 3000});
+    }
+    
   }
 
   async enviarAlteracoesInfo(){
@@ -98,5 +140,9 @@ export class PerfilComponent implements OnInit {
         }
       }
     )
+  }
+
+  descartar(){
+    this.objUserPerfil = JSON.parse(JSON.stringify(this.objUserPerfilDefault));
   }
 }
