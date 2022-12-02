@@ -104,7 +104,7 @@
             <input type="text" id="pais" matInput placeholder="PAÍS/REGIÃO" [(ngModel)]="objUserPerfil.pais">
         </mat-form-field>
 
-        <button mat-stroked-button color="accent" class="btn-block">DESCARTAR MUDANÇAS</button>
+        <button mat-stroked-button color="accent" class="btn-block" (click)="descartar()">DESCARTAR MUDANÇAS</button>
 
         <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; margin-top: 5%; border-color: blue;" (click)="enviarAlteracoesInfo()"><span style="color:white;">SALVAR MUDANÇAS</span></button>
       </mat-card>
@@ -126,7 +126,7 @@
               <p class="label-form">OBRIGATÓRIO</p>
   
               <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="password" matInput placeholder="SENHA ATUAL" formControlName="password">
+                <input type="password" id="password" matInput placeholder="SENHA ATUAL" formControlName="password">
               </mat-form-field>
   
               <mat-card-header class="mat-card-header-class title-form">
@@ -135,7 +135,7 @@
               <p class="label-form">OBRIGATÓRIO</p>
   
               <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="newPassword" matInput placeholder="NOVA SENHA" formControlName="newPassword">
+                <input type="password" id="newPassword" matInput placeholder="NOVA SENHA" formControlName="newPassword">
               </mat-form-field>
   
   
@@ -145,7 +145,7 @@
               <p class="label-form">OBRIGATÓRIO</p>
   
               <mat-form-field class="example-full-width" style="margin-right: 5%;">
-                <input type="text" id="newPasswordAgain" matInput placeholder="DIGITE A NOVA SENHA NOVAMENTE" formControlName="newPasswordAgain">
+                <input type="password" id="newPasswordAgain" matInput placeholder="DIGITE A NOVA SENHA NOVAMENTE" formControlName="newPasswordAgain">
               </mat-form-field>
             </form>
           </div>
@@ -166,7 +166,7 @@
 
       <div class="btnDiv">
         <button mat-stroked-button color="accent" class="btn-block" (click)="formularioSenha.reset()">DESCARTAR MUDANÇAS</button>
-        <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; margin-top: 5%; border-color: blue;" [disabled]="!formularioSenha.valid" (click)="onsubmit()"><span style="color:white;">SALVAR MUDANÇAS</span></button>
+        <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; margin-top: 5%; border-color: blue; cursor: pointer;" [disabled]="!formularioSenha.valid" (click)="onsubmit()"><span style="color:white;">SALVAR MUDANÇAS</span></button>
       </div>
     </mat-card>
   </div>
