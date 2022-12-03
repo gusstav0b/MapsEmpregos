@@ -1,0 +1,23 @@
+  <div class="container" style="padding-top: 5%; padding-bottom: 15%;">
+
+    <!--<button (click)="consulta()">Cli</button>-->
+
+    <div class="row">
+      <mat-card class="col-md-3 card-content" style="margin-top: 5%; cursor: pointer;" *ngFor="let card of cards">
+              <div class="card-block">
+                      <div class="author">
+                          <h4 >{{card.titulo}}</h4>
+                      </div>
+                  <img style="margin: auto; display: block;" [src]="card.img" mat-card-lg-image *ngIf="card.img">
+                  <br>
+                  <p style="text-align: center;">
+                      {{card.descricao}}
+                  </p>
+              </div>
+      </mat-card>
+  </div>
+  </div>
+  
+
+  
+  

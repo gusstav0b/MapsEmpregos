@@ -1,0 +1,32 @@
+<mat-card class="box"style="margin-top: 5%">
+
+    <mat-card-header>
+      
+    </mat-card-header>
+    <div style="display: flex;">
+        <mat-form-field class="example-full-width" style="margin-right: 5%;">
+            <input [disabled]="flagDisabled" type="text" matInput placeholder="Nome da Instituição">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" style="margin-right: 5%;">
+            <input [disabled]="flagDisabled" type="text" matInput [placeholder]="campo=='academicas'?'Nome do Curso':'Nome do Cargo'"[ngModel]="informacao.nome">
+        </mat-form-field>
+
+    </div>
+    <div style="display: flex;">
+        <mat-form-field class="example-full-width" style="margin-right: 5%;">
+            <input [disabled]="flagDisabled" type="date" matInput placeholder="Data de Inicio"[ngModel]="informacao.dataInicio">
+        </mat-form-field>
+    </div>
+        <div style="display: flex;">
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input [disabled]="flagDisabled" type="date" matInput placeholder="Data da Conclusão"[ngModel]="informacao.dataFim">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <textarea [disabled]="flagDisabled" style="resize: none;" type="text" matInput placeholder="Informações adicionais"[ngModel]="informacao.infoAd"
+                    row=2></textarea>
+            </mat-form-field>
+        </div>
+
+</mat-card>

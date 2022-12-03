@@ -1,1 +1,169 @@
-<p>curriculo works!</p>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="opcoes">
+        <mat-card-content>
+            <mat-list style="padding: 0;">
+                <mat-list-item class="list-item" (click)="flag='settings'" [ngClass]="flag=='settings' ? 'list-border' : ''"><mat-icon class="icon-style">book</mat-icon>VER CURRICULO </mat-list-item>
+                <mat-list-item class="list-item" (click)="flag='security'" [ngClass]="flag=='security' ? 'list-border' : ''"><mat-icon class="icon-style">school</mat-icon>DADOS ACADEMICOS </mat-list-item>
+                <mat-list-item class="list-item" (click)="flag='conecct'" [ngClass]="flag=='conecct' ? 'list-border' : ''"><mat-icon class="icon-style">business</mat-icon>DADOS PROFISSIONAIS </mat-list-item>
+               </mat-list>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="box" *ngIf="flag=='settings'">
+        <mat-card-header class="mat-card-header-class">
+          <h1>{{objUserPerfil.nome}} {{objUserPerfil.sobrenome}}</h1>
+          <p style="margin-left: 5%;"> Endereço: {{objUserPerfil.endereco}}, {{objUserPerfil.complemento}}, {{objUserPerfil.bairro}}, {{objUserPerfil.cidade}} - {{objUserPerfil.uf}} - {{objUserPerfil.pais}}</p>
+          <h3>CONTATO </h3>
+          <p style="margin-left: 5%;">Email: {{objUserPerfil.email}}</p>
+          <p style="margin-left: 5%;">Telefone: {{objUserPerfil.telefone}}</p>
+        </mat-card-header>
+          
+       
+
+        <mat-card-title class="mat-card-title-class" style="margin-bottom: 3%;">INFORMAÇÕES ACADEMICAS</mat-card-title>
+        <app-informacao-component [campo]="'academicas'" [flagDisabled]="true" *ngFor="let info of informacao"[informacao]="info"></app-informacao-component>
+
+        <app-informacao-component [campo]="'profissionais'" [flagDisabled]="true" *ngFor="let info of informacao"[informacao]="info"></app-informacao-component>
+        <p class="label-intermed">Gerencoamento dos seus dados academicos .</p>
+ 
+        <mat-card-header class="mat-card-header-class">
+            <mat-card-title class="mat-card-title-class">EXPERIENCIA PROFISSIONAIS</mat-card-title>
+        </mat-card-header>
+
+        <p class="label-intermed">Gerenciamento das suas experiencias profissionais.</p>
+
+        <div style="display:flex;">
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="name" matInput placeholder="Nome" [(ngModel)]="objUserPerfil.nome">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="secondname" matInput placeholder="Sobrenome" [(ngModel)]="objUserPerfil.sobrenome">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <mat-select [(value)]="objUserPerfil.idioma">
+                    <mat-option *ngFor="let idioma of idiomas" [value]="idioma.value">
+                      {{idioma.viewValue}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <div style="display:flex;">
+          <mat-form-field class="example-full-width" style="margin-right: 5%;">
+              <input type="text" id="name" matInput placeholder="Cpf/cnpj" [(ngModel)]="objUserPerfil.cpfcnpj">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" style="margin-right: 5%;">
+              <input type="text" id="secondname" matInput placeholder="Telefone" [(ngModel)]="objUserPerfil.telefone">
+          </mat-form-field>
+      </div>
+
+        <mat-card-header class="mat-card-header-class">
+            <mat-card-title class="mat-card-title-class">ENDEREÇO</mat-card-title>
+        </mat-card-header>
+
+        <div style="display:flex;">
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="endereco" matInput placeholder="Endereço" [(ngModel)]="objUserPerfil.endereco">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="city" matInput placeholder="Cidade" [(ngModel)]="objUserPerfil.cidade">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="uf" matInput placeholder="Estado" [(ngModel)]="objUserPerfil.uf">
+            </mat-form-field>
+        </div>
+
+        <div style="display:flex;">
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="cep" matInput placeholder="Cep" [(ngModel)]="objUserPerfil.cep">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="comlemento" matInput placeholder="Complemento" [(ngModel)]="objUserPerfil.complemento">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="Bairro" matInput placeholder="Bairro" [(ngModel)]="objUserPerfil.bairro">
+            </mat-form-field>
+        </div>
+
+        <mat-card-header class="mat-card-header-class">
+            <mat-card-title class="mat-card-title-class">PAÍS/REGIÃO</mat-card-title>
+        </mat-card-header>
+
+        <mat-form-field class="example-full-width" style="margin-right: 5%; width: 580px !important;">
+            <input type="text" id="pais" matInput placeholder="PAÍS/REGIÃO" [(ngModel)]="objUserPerfil.pais">
+        </mat-form-field>
+
+        <button mat-stroked-button color="accent" class="btn-block">DESCARTAR MUDANÇAS</button>
+
+        <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; margin-top: 5%; border-color: blue;" (click)="enviarAlteracoesInfo()"><span style="color:white;">SALVAR MUDANÇAS</span></button>
+      </mat-card>
+
+    <mat-card class="box" *ngIf="flag=='security'">
+      <mat-card-header class="mat-card-header-class">
+        <mat-card-title class="mat-card-title-class">ALTERAR SENHA</mat-card-title>
+      </mat-card-header>
+
+      <p class="label-intermed">Para sua segurança, recomendamos o uso de uma senha única, que não seja usada para nenhuma outra conta on-line.</p>
+
+      <div class="container" style="width: max-content;"> 
+        <div class="row" style="display:flex;">
+          <div class="col-md-4">
+            <form class="example-form" [formGroup]="formularioSenha">
+              <mat-card-header class="mat-card-header-class title-form">
+                <mat-card-title class="mat-card-title-class">SENHA ATUAL</mat-card-title>
+              </mat-card-header>
+              <p class="label-form">OBRIGATÓRIO</p>
+  
+              <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="password" matInput placeholder="SENHA ATUAL" formControlName="password">
+              </mat-form-field>
+  
+              <mat-card-header class="mat-card-header-class title-form">
+                <mat-card-title class="mat-card-title-class">NOVA SENHA</mat-card-title>
+              </mat-card-header>
+              <p class="label-form">OBRIGATÓRIO</p>
+  
+              <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="newPassword" matInput placeholder="NOVA SENHA" formControlName="newPassword">
+              </mat-form-field>
+  
+  
+              <mat-card-header class="mat-card-header-class title-form">
+                <mat-card-title class="mat-card-title-class">DIGITE A NOVA SENHA NOVAMENTE</mat-card-title>
+              </mat-card-header>
+              <p class="label-form">OBRIGATÓRIO</p>
+  
+              <mat-form-field class="example-full-width" style="margin-right: 5%;">
+                <input type="text" id="newPasswordAgain" matInput placeholder="DIGITE A NOVA SENHA NOVAMENTE" formControlName="newPasswordAgain">
+              </mat-form-field>
+            </form>
+          </div>
+          <div id="linha-vertical"></div>
+          <div class="col-md-4">
+            <mat-card-header class="mat-card-header-class title-form">
+              <mat-card-title class="mat-card-title-class">SUA SENHA</mat-card-title>
+            </mat-card-header>
+            <div>
+              <p>Sua senha precisa ser diferente das últimas 5 senhas usadas</p>
+              <p>Sua senha precisa ter mais de 7 caracteres</p>
+              <p>Sua senha precisa ter pelo menos um número</p>
+              <p>Sua senha não pode conter espaços</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btnDiv">
+        <button mat-stroked-button color="accent" class="btn-block" (click)="formularioSenha.reset()">DESCARTAR MUDANÇAS</button>
+        <button mat-stroked-button color="accent" class="btn-block" style="background-color:blue; margin-top: 5%; border-color: blue;" [disabled]="!formularioSenha.valid" (click)="onsubmit()"><span style="color:white;">SALVAR MUDANÇAS</span></button>
+      </div>
+    </mat-card>
+  </div>

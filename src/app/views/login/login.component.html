@@ -1,1 +1,21 @@
-<h1>tela de login</h1>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" style="background-color: #6495ED;">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <form class="example-form" [formGroup]="formulario">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input type="text" id="user" matInput placeholder="Usuário/Email" formControlName="user">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input type="password" id="password" matInput placeholder="Senha" formControlName="password">
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block" [disabled]="!formulario.valid" (click)="onsubmit()">Login</button>
+      </form>
+      <mat-card-footer>
+        <p style="margin-top: 5%; margin-left: 5%;">Não tem uma conta? <a href="/cadastro">Cadastre-se!</a></p>
+      </mat-card-footer>
+    </mat-card>
+  </div>

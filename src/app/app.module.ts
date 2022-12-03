@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './views/home/home.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -14,28 +11,27 @@ import {MatButtonModule} from '@angular/material/button';
 import { PerfilComponent } from './views/perfil/perfil.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule}from '@angular/material/input';
 import { CurriculoComponent } from './views/curriculo/curriculo.component';
 import { LoginComponent } from './views/login/login.component';
 import { CadastroComponent } from './views/cadastro/cadastro.component';
-
-
-
-
+import { PagesModule } from './pages/pages.module';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { InformacaoComponentComponent } from './views/curriculo/informacao-component/informacao-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    FooterComponent,
     PerfilComponent,
     CurriculoComponent,
     LoginComponent,
-    CadastroComponent
-   
-    
+    CadastroComponent,
+    InformacaoComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -44,16 +40,20 @@ import { CadastroComponent } from './views/cadastro/cadastro.component';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    HttpClientModule,
     MatButtonModule,
     MatGridListModule,
     MatFormFieldModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    PagesModule,
+    MatCardModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatListModule
     
-    
-
   ],
-  providers: [],
+  providers: [MatSnackBar,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
