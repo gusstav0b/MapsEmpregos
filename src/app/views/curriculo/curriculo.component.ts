@@ -12,7 +12,7 @@ import { MapsServiceService } from 'src/app/service/maps-service.service';
 })
 export class CurriculoComponent implements OnInit {
 
-    flag = 'settings';
+    flag = 'settings';'conecct';
     formularioSenha: FormGroup;
     objUserPerfil = JSON.parse("{}");
     idiomas = [
