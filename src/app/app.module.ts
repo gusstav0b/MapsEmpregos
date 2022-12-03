@@ -22,6 +22,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { InformacaoComponentComponent } from './views/curriculo/informacao-component/informacao-component.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     PerfilComponent,
     CurriculoComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
+    InformacaoComponentComponent
   ],
   imports: [
     BrowserModule,
