@@ -11,8 +11,9 @@ export class InformacaoComponentComponent implements OnInit {
   @Input() campo
   @Input() flagDisabled=false
   @Input() informacao
+  @Input() informacaoXp
   ngOnInit(): void {
-    console.log(this.informacao)
+  
   }
 
 }

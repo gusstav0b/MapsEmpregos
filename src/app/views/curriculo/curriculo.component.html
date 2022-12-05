@@ -25,30 +25,25 @@
       <p style="margin-left: 5%;">Telefone: {{objUserPerfil.telefone}}</p>
     </mat-card-header>
 
-    <mat-card-title class="mat-card-title-class" style="margin-bottom: 3%;">INFORMAÇÕES ACADEMICAS</mat-card-title>
-    <app-informacao-component [campo]="'academicas'" [flagDisabled]="true" *ngFor="let info of informacao"
-      [informacao]="info"></app-informacao-component>
-
-    <app-informacao-component [campo]="'academicas'" [flagDisabled]="true" *ngFor="let info of informacao"
+    <mat-card-title class="mat-card-title-class" style="margin-bottom: 3%; margin-top: 5%;">INFORMAÇÕES ACADEMICAS</mat-card-title>
+    <app-informacao-component  style="margin-bottom: 3%; margin-top: 5%;"[campo]="'academicas'" [flagDisabled]="true" *ngFor="let info of informacao"
       [informacao]="info"></app-informacao-component>
 
 
-    <mat-card-header class="mat-card-header-class">
-      <mat-card-title class="mat-card-title-class">EXPERIENCIA PROFISSIONAIS</mat-card-title>
+    <mat-card-header class="mat-card-header-class" style="margin-bottom: 3%; margin-top: 5%;">
+      <mat-card-title class="mat-card-title-class" style="margin-bottom: 3%; margin-top: 5%;">EXPERIENCIA PROFISSIONAIS</mat-card-title>
     </mat-card-header>
 
-    <app-informacao-component [campo]="'profissionais'" [flagDisabled]="true" *ngFor="let info of informacao"
+    <app-informacao-component   style="margin-bottom: 3%; margin-top: 5%;"[campo]="'profissionais'" [flagDisabled]="true" *ngFor="let info of informacaoXp"
       [informacao]="info"></app-informacao-component>
 
-    <app-informacao-component [campo]="'profissionais'" [flagDisabled]="true" *ngFor="let info of informacao"
-      [informacao]="info"></app-informacao-component>
   </mat-card>
 
 
   <mat-card class="box" *ngIf="flag=='security'">
     <mat-card-header class="mat-card-header-class">
 
-      <mat-card-title class="mat-card-title-class">DADOS ACADEMICOS</mat-card-title>
+      <mat-card-title class="mat-card-title-class" style="margin-bottom: 3%; margin-top: 5%;">DADOS ACADEMICOS</mat-card-title>
 
     </mat-card-header>
 
@@ -78,7 +73,7 @@
 
   <mat-card class="box" *ngIf="flag=='conecct'">
     <mat-card-header class="mat-card-header-class">
-      <mat-card-title class="mat-card-title-class">DADOS PROFISSIONAIS</mat-card-title>
+      <mat-card-title  style='margin-top: auto' class="mat-card-title-class">DADOS PROFISSIONAIS</mat-card-title>
     </mat-card-header>
 
     <p class="label-intermed">Insira seus dados profissionais para que possam ser atribuidos a seu curriculo.</p>
@@ -87,7 +82,7 @@
       <div class="row" style="display:flex;">
         <div class="col-md-4">
 
-          <app-informacao-component [campo]="'profissionais'" [flagDisabled]="false" *ngFor="let info of informacao"
+          <app-informacao-component [campo]="'profissionais'" [flagDisabled]="false" *ngFor="let info of informacaoXp"
             [informacao]="info"></app-informacao-component>
 
 

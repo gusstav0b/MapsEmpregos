@@ -21,17 +21,33 @@ export class CurriculoComponent implements OnInit {
       {value: 'es', viewValue: 'Espanhol'},
     ];
     constructor(private formBuilder : FormBuilder, private mapsService: MapsServiceService, private snackBar: MatSnackBar, private router: Router) { }
-  informacao=[{
-    nome:'M',
-    dataFim: '01/12/2022',
-    dataInicio:'2022-01-04',
-    infoAd:'Penis'
+  informacaoXp=[{
+    nomeInstituicao:'Unifacs',
+    nome:'Estagiario de Desenvolvimento',
+    dataFim: '2022-12-05',
+    dataInicio:'2021-03-05',
+    infoAd:'Estagiario que realisa tarefas de desenvolvimento nos sistemas da faculdade UNIFACS'
   },
   {
-    nome:'K',
-    dataFim: '01-12-2022',
-    dataInicio: '01-09-2019',
-    infoAd:'BCT'
+    nomeInstituicao:'Atacadão',
+    nome:'estagiario de T.I',
+    dataFim: '2021-02-24',
+    dataInicio: '2019-04-24',
+    infoAd:'Estagiario de T.I que fazia o papel de suporte'
+  }]
+  informacao=[{
+    nomeInstituicao:'Unifacs',
+    nome:'Ciencias da Computação',
+    dataFim: '2022-12-05',
+    dataInicio:'2019-02-14',
+    infoAd:'Estudante de Ciencias da Computação na Unifacs'
+  },
+  {
+    nomeInstituicao:'UNIFACS',
+    nome:'Administração',
+    dataFim: '2018-12-20',
+    dataInicio: '2018-06-10',
+    infoAd:'Curso Tecninco de Administração'
   }]
     ngOnInit(): void {
       //this.objUserPerfil.idioma = 'pt-br';
