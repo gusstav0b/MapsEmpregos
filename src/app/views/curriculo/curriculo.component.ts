@@ -50,6 +50,7 @@ export class CurriculoComponent implements OnInit {
     infoAd:'Curso Tecninco de Administração'
   }]
     ngOnInit(): void {
+      
       //this.objUserPerfil.idioma = 'pt-br';
       this.formularioSenha = this.formBuilder.group({
         password: [null, [Validators.required]],
