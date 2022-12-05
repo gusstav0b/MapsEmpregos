@@ -5,7 +5,7 @@
     </mat-card-header>
     <div style="display: flex;">
         <mat-form-field class="example-full-width" style="margin-right: 5%;">
-            <input [disabled]="flagDisabled" type="text" matInput placeholder="Nome da Instituição">
+            <input [disabled]="flagDisabled" type="text" matInput [placeholder]= "campo=='academicas'?'Nome da Instituição': 'Nome da Insira'"[ngModel]="informacao.nomeInstituicao">
         </mat-form-field>
         <mat-form-field class="example-full-width" style="margin-right: 5%;">
             <input [disabled]="flagDisabled" type="text" matInput [placeholder]="campo=='academicas'?'Nome do Curso':'Nome do Cargo'"[ngModel]="informacao.nome">
