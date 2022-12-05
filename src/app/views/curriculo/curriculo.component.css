@@ -102,6 +102,9 @@
   .mat-card-title-class {
     font-size: 20px;
     margin: 0;
+    margin-bottom: 3%; 
+    margin-top: 5%;
+    border: #000;
   }
  .mat-stroked-button {
     border: 1px solid currentColor;
@@ -134,5 +137,6 @@
 }
 
 .btnDiv{
+  margin-bottom: 10%;
   margin-top: 10%;
 }
